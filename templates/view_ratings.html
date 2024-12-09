@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Ratings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .back{
+            width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    display: inline-block;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    color:green;
+    font-size: 1.5rem;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e9f7fa;
+        }
+
+        th, td {
+            font-weight: 500;
+        }
+
+        .container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Player Ratings</h2>
+
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Rating</th>
+                <th>Matches Played</th>
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>Draws</th>
+                <th>Win Rate (%)</th>
+            </tr>
+
+            {% for player_id, player in players.items() %}
+            {% set win_rate = (player['Wins'] / player['Matches Played'] * 100) if player['Matches Played'] > 0 else 0 %}
+            <tr>
+                <td>{{ player_id }}</td>
+                <td>{{ player['Name'] }}</td>
+                <td>{{ player['Rating'] }}</td>
+                <td>{{ player['Matches Played'] }}</td>
+                <td>{{ player['Wins'] }}</td>
+                <td>{{ player['Losses'] }}</td>
+                <td>{{ player['Draws'] }}</td>
+                <td>{{ win_rate | round(2) }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <a href="/" class="back">Back to Home</a>
+    </div>
+
+</body>
+</html>

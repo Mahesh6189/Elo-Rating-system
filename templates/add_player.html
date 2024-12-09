@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Player</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Add a New Player</h1>
+
+        <!-- Error Message -->
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+
+        <!-- Form -->
+        <form method="POST" onsubmit="return validateName()">
+            <label for="player_id">Player ID:</label>
+            <input type="text" id="player_id" name="player_id" placeholder="Enter Player ID" required><br>
+
+            <label for="name">Player Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter Player Name" required><br>
+
+            <input type="submit" value="Add Player">
+        </form>
+
+        <!-- Back to Home Button -->
+        <button onclick="window.location.href='{{ url_for('index') }}'">Back to Home</button>
+    </div>
+
+    <!-- JavaScript for Name Validation -->
+    <script>
+        function validateName() {
+            const nameField = document.getElementById('name');
+            const nameValue = nameField.value;
+
+            // Regular expression to allow only letters, spaces, and basic punctuation
+            const nameRegex = /^[a-zA-Z\s\-']+$/;
+
+            if (!nameRegex.test(nameValue)) {
+                alert('Player name should only contain letters, spaces, hyphens, or apostrophes.');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Rating System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<style>
+    img {
+    display: block;
+    margin: 20px auto;
+    max-width: 80%;
+    height: 500px;
+    border-radius: 10px;
+    box-shadow:  10px 10px red;
+    border-color: solid blue 3px;
+}
+.head{
+    text-shadow: 4px 4px red;
+    font-size: 3.5rem;
+}
+</style>
+
+
+    <div class="container">
+        <h1 class="head">Chess Rating System</h1>
+        <a href="{{ url_for('add_player') }}">Add Player</a>
+        <a href="{{ url_for('record_match') }}">Record Match</a>
+        <a href="{{ url_for('view_ratings') }}">View Ratings</a>
+        <a href="{{ url_for('check_random') }}">Check Random Player</a>
+        <a href="{{ url_for('delete_player') }}">Delete Player</a>
+    </div>
+    <div>
+        <img src="{{ url_for('static', filename='chessrat.jpg') }}" alt="Chess">
+    </div>
+
+    <script>
+        // Sample data to visualize (these values would be dynamically updated in your Flask app)
+        const playerNames = {{ player_names|safe }};
+        const playerRatings = {{ player_ratings|safe }};
+
+        // Create a chart with Chart.js
+        const ctx = document.getElementById('ratingChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',  // Can be 'bar', 'line', 'pie', etc.
+            data: {
+                labels: playerNames,
+                datasets: [{
+                    label: 'Chess Ratings',
+                    data: playerRatings,
+                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
