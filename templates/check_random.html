@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Random Player Ratings</title>
+</head>
+<body>
+    <h2>Check Random Player Ratings</h2>
+    <form method="POST">
+        Player 1 Name: <input type="text" name="player1_name"><br>
+        Rating of Player 1: <input type="number" name="player1_rating"><br>
+        Player 2 Name: <input type="text" name="player2_name"><br>
+        Rating of Player 2: <input type="number" name="player2_rating"><br>
+        Match Status:
+        <select name="status">
+            <option value="win">Win</option>
+            <option value="loss">Loss</option>
+            <option value="draw">Draw</option>
+        </select><br>
+        <input type="submit" value="Check Ratings">
+    </form>
+
+    {% if new_rating1 and new_rating2 %}
+        <h3>Temporary Updated Ratings</h3>
+        <p>{{ player1_name }}: {{ new_rating1 }}</p>
+        <p>{{ player2_name }}: {{ new_rating2 }}</p>
+{% endif %}
+<a href="{{ url_for('index') }}"  class="back">Back To Home</a>
+<style>
+    /* General body styling */
+   
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+.back{
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    display: inline-block;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    color:green;
+    font-size: 1.5rem;
+}
+
+/* Container for content */
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Heading styling */
+h2 {
+    color: #333;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Form input fields */
+form input[type="text"],
+form input[type="number"],
+form select,
+form input[type="submit"]{
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    display: inline-block;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Form input field focus */
+form input[type="text"]:focus,
+form input[type="number"]:focus,
+form select:focus {
+    outline: none;
+    border-color: #66afe9;
+    box-shadow: 0 0 10px rgba(102, 175, 233, 0.4);
+}
+
+/* Submit button */
+form input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for submit button */
+form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Paragraph and heading for updated ratings */
+h3 {
+    color: #007BFF;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Updated ratings styling */
+p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Spacing for paragraphs */
+p span {
+    font-weight: bold;
+}
+
+/* Message feedback */
+p {
+    text-align: center;
+    padding: 10px;
+    background-color: #e9f7fa;
+    border-radius: 5px;
+    margin: 15px 0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Container spacing */
+.container input[type="submit"] {
+    width: 100px;
+    margin: 10px;
+    font-weight: bold;
+    background-color: #ffeb3d;
+}
+
+/* Main wrapper adjustments */
+.container {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 300;
+}
+
+</style>
+</body>
+</html>
