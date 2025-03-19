@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Player</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Delete Player</h2>
+
+        {% if error %}
+            <p style="color: red">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST">
+            <label for="player_id">Enter Player ID to delete:</label>
+            <input type="text" id="player_id" name="player_id" required>
+            <button type="submit">Delete</button>
+        </form>
+
+        <br>
+        <a href="/">Back to Home</a>
+    </div>
+
+</body>
+</html>
